@@ -4,25 +4,30 @@
 .color-background-1 {
   --color-foreground: var(--color-base-text);
   --color-background: var(--color-base-background-1);
+  --gradient-background: var(--gradient-base-background-1);
 }
 
 .color-background-2 {
   --color-background: var(--color-base-background-2);
+  --gradient-background: var(--gradient-base-background-2);
 }
 
 .color-inverse {
   --color-foreground: var(--color-base-background-1);
   --color-background: var(--color-base-text);
+  --gradient-background: rgb(var(--color-base-text));
 }
 
 .color-accent-1 {
   --color-foreground: var(--color-base-solid-button-labels);
   --color-background: var(--color-base-accent-1);
+  --gradient-background: var(--gradient-base-accent-1);
 }
 
 .color-accent-2 {
   --color-foreground: var(--color-base-solid-button-labels);
   --color-background: var(--color-base-accent-2);
+  --gradient-background: var(--gradient-base-accent-2);
 }
 
 .color-foreground-outline-button {
@@ -215,6 +220,20 @@ html.no-js .no-js-hidden {
   margin-bottom: 5rem;
 }
 
+@media screen and (min-width: 750px) {
+  .element-margin {
+    margin-top: calc(5rem + var(--page-width-margin));
+  }
+
+  .spaced-section {
+    margin-top: calc(5rem + var(--page-width-margin));
+  }
+
+  .spaced-section:last-child {
+    margin-bottom: calc(5rem + var(--page-width-margin));
+  }
+}
+
 .spaced-section--full-width + .spaced-section--full-width {
   margin-top: 0;
 }
@@ -244,7 +263,8 @@ body,
 
 @media screen and (min-width: 750px) {
   .background-secondary {
-    padding: 6rem 0 5rem;
+    padding: calc(6rem + var(--page-width-margin)) 0
+      calc(5rem + var(--page-width-margin));
   }
 }
 
@@ -692,6 +712,10 @@ summary::-webkit-details-marker {
 
 @media screen and (min-width: 750px) {
   .disclosure-has-popup[open] > summary + * {
+    z-index: 4;
+  }
+
+  .facets .disclosure-has-popup[open] > summary + * {
     z-index: 2;
   }
 }
@@ -701,6 +725,11 @@ summary::-webkit-details-marker {
   Focus ring - default (with offset)
 */
 
+*:focus {
+  outline: 0;
+  box-shadow: none;
+}
+
 *:focus-visible {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 0.3rem;
@@ -709,7 +738,8 @@ summary::-webkit-details-marker {
 }
 
 /* Fallback - for browsers that don't support :focus-visible, a fallback is set for :focus */
-*:focus {
+.focused,
+.no-js *:focus {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 0.3rem;
   box-shadow: 0 0 0 0.3rem rgb(var(--color-background)),
@@ -717,7 +747,7 @@ summary::-webkit-details-marker {
 }
 
 /* Negate the fallback side-effect for browsers that support :focus-visible */
-*:focus:not(:focus-visible) {
+.no-js *:focus:not(:focus-visible) {
   outline: 0;
   box-shadow: none;
 }
@@ -732,14 +762,14 @@ summary::-webkit-details-marker {
   box-shadow: 0 0 0.2rem 0 rgba(var(--color-foreground), 0.3);
 }
 
-/* Fallback */
-.focus-inset:focus {
+.focused.focus-inset,
+.no-js .focus-inset:focus {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: -0.2rem;
   box-shadow: 0 0 0.2rem 0 rgba(var(--color-foreground), 0.3);
 }
 
-.focus-inset:focus:not(:focus-visible) {
+.no-js .focus-inset:focus:not(:focus-visible) {
   outline: 0;
   box-shadow: none;
 }
@@ -761,14 +791,15 @@ summary::-webkit-details-marker {
     0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
 }
 
-.focus-offset:focus {
+.focus-offset.focused,
+.no-js .focus-offset:focus {
   outline: 0.2rem solid rgba(var(--color-foreground), 0.5);
   outline-offset: 1rem;
   box-shadow: 0 0 0 1rem rgb(var(--color-background)),
     0 0 0.2rem 1.2rem rgba(var(--color-foreground), 0.3);
 }
 
-.focus-offset:focus:not(:focus-visible) {
+.no-js .focus-offset:focus:not(:focus-visible) {
   outline: 0;
   box-shadow: none;
 }
@@ -1055,7 +1086,7 @@ summary::-webkit-details-marker {
   background-color: transparent;
 }
 
-.media > *:not(.zoom, .deferred-media__poster-button),
+.media > *:not(.zoom):not(.deferred-media__poster-button),
 .media model-viewer {
   display: block;
   max-width: 100%;
@@ -1206,28 +1237,16 @@ deferred-media {
 
 .button.loading {
   color: transparent;
+  position: relative;
 }
 
-.button.loading:after {
-  animation: loading var(--duration-long) infinite linear;
-  border: 0.5rem solid rgba(var(--color-button-text), 0.4);
-  border-left: 0.5rem solid rgb(var(--color-button-text));
-  border-radius: 100%;
-  box-sizing: content-box;
-  content: '';
-  display: block;
-  height: 2rem;
+.button.loading > .loading-overlay__spinner {
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   position: absolute;
-  width: 2rem;
-}
-
-@keyframes loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
+  height: 100%;
+  display: flex;
 }
 
 /* Button - social share */
@@ -1246,14 +1265,9 @@ deferred-media {
   display: flex;
   min-height: 2.4rem;
   align-items: center;
-  color: rgba(var(--color-link), var(--alpha-link));
+  color: rgb(var(--color-link));
   margin-left: 0;
   padding-left: 0;
-}
-
-.share-button__button:hover,
-details[open] > .share-button__button {
-  color: rgb(var(--color-link));
 }
 
 details[open] > .share-button__fallback {
@@ -1268,7 +1282,7 @@ details[open] > .share-button__fallback {
 .share-button__button,
 .share-button__fallback button {
   cursor: pointer;
-  background: rgb(var(--color-background));
+  background-color: transparent;
   border: none;
 }
 
@@ -1309,6 +1323,12 @@ details[open] > .share-button__fallback {
 
 .share-button__close:not(.hidden) + .share-button__copy {
   display: none;
+}
+
+.share-button__close,
+.share-button__copy {
+  background-color: transparent;
+  color: rgb(var(--color-foreground));
 }
 
 .share-button__fallback .field__input {
@@ -1698,7 +1718,7 @@ input[type='checkbox'] {
   right: 0;
   bottom: 0;
   background: rgb(var(--color-background));
-  z-index: 1;
+  z-index: 4;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1719,8 +1739,8 @@ input[type='checkbox'] {
 
 .cart-count-bubble {
   position: absolute;
-  background-color: rgb(var(--color-base-accent-1));
-  color: rgb(var(--color-base-solid-button-labels));
+  background-color: rgb(var(--color-button));
+  color: rgb(var(--color-button-text));
   height: 1.7rem;
   width: 1.7rem;
   border-radius: 100%;
@@ -1808,7 +1828,6 @@ input[type='checkbox'] {
   grid-template-areas: 'left-icon heading icons';
   grid-template-columns: 1fr 2fr 1fr;
   align-items: center;
-  background-color: rgb(var(--color-background));
   padding-top: 1rem;
   padding-bottom: 1rem;
 }
@@ -1921,6 +1940,10 @@ input[type='checkbox'] {
   justify-content: center;
 }
 
+.header__icon {
+  color: rgb(var(--color-foreground));
+}
+
 .header__icon span {
   height: 100%;
 }
@@ -1997,9 +2020,27 @@ menu-drawer + .header__search {
   }
 }
 
+.no-js .predictive-search {
+  display: none;
+}
+
 details[open] > .search-modal {
   opacity: 1;
   animation: animateMenuOpen var(--duration-default) ease;
+}
+
+details[open] .modal-overlay {
+  display: block;
+}
+
+details[open] .modal-overlay::after {
+  position: absolute;
+  content: '';
+  background-color: rgb(var(--color-foreground), 0.5);
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 100vh;
 }
 
 .no-js details[open] > .header__icon--search {
@@ -2230,4 +2271,10 @@ details-disclosure > details {
   border-color: rgba(var(--color-badge-border), var(--alpha-badge-border));
   color: rgb(var(--color-foreground));
   word-break: break-word;
+}
+
+.gradient {
+  background: var(--color-background);
+  background: var(--gradient-background);
+  background-attachment: fixed;
 }

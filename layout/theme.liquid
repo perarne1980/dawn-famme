@@ -74,6 +74,7 @@
         --payment-terms-background-color: {{ settings.colors_background_1 }};
 
         --page-width: {{ settings.page_width | divided_by: 10 }}rem;
+        --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
       }
 
       *,
@@ -136,7 +137,6 @@
 
     {% section 'announcement-bar' %}
     {% section 'header' %}
-
     <main id="MainContent" class="content-for-layout focus-none" role="main" tabindex="-1">
       {{ content_for_layout }}
     </main>
