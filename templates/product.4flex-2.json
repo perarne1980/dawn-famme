@@ -62,6 +62,7 @@
         "share": {
           "type": "share",
           "settings": {
+            "share_label": "Share"
           }
         }
       },
@@ -79,18 +80,8 @@
       ],
       "settings": {
         "enable_sticky_info": true,
+        "hide_variants": false,
         "enable_video_looping": false
-      }
-    },
-    "product-recommendations": {
-      "type": "product-recommendations",
-      "settings": {
-        "heading": "",
-        "image_ratio": "adapt",
-        "show_secondary_image": true,
-        "add_image_padding": false,
-        "show_image_outline": true,
-        "show_vendor": false
       }
     },
     "1629375880536be307": {
@@ -99,7 +90,8 @@
         "1629375880536be307-0": {
           "type": "heading",
           "settings": {
-            "heading": "Om 4FLEX"
+            "heading": "Om 4FLEX",
+            "heading_size": "medium"
           }
         },
         "1629375880536be307-1": {
@@ -127,14 +119,17 @@
         "1629375880536be307-2"
       ],
       "settings": {
-        "image": "shopify:\/\/shop_images\/4flex-blue_21.jpg",
+        "image": "shopify:\/\/shop_images\/4flex-bilde-om-4flex.jpg",
         "image_url": "",
         "image_2": "shopify:\/\/shop_images\/4flex-blue_8_1f822290-512d-47eb-b52a-089a2353960c.jpg",
         "image2_url": "",
+        "adapt_height_first_image": false,
         "desktop_text_box_position": "center",
+        "show_text_box": true,
+        "image_overlay_opacity": 0,
         "color_scheme": "background-1",
         "stack_images_on_mobile": true,
-        "adapt_height_first_image": false
+        "show_text_below": true
       }
     },
     "16293749856e1dbefd": {
@@ -143,13 +138,13 @@
         "16293749856e1dbefd-0": {
           "type": "heading",
           "settings": {
-            "heading": "Verdt å merke seg"
+            "heading": "Hvorfor 4FLEX jeans?"
           }
         },
         "16293749856e1dbefd-1": {
           "type": "text",
           "settings": {
-            "text": "<p>-Krymper minimalt<\/p><p>-Maksimal stretch (4-way stretch)<\/p><p>-Total bevegelsesfrihet<\/p><p>-Løfter og støtter kroppen<\/p><p>-\"Recall-Technology\" som sikrer god passform, vask etter vask<\/p><p>-Miljøvennlig produksjon<\/p>"
+            "text": "<p><strong> -Total bevegelsesfrihet<\/strong><\/p><p><strong>-Maksimal stretch (4-way stretch)<\/strong><\/p><p><strong>-Løfter og støtter kroppen<\/strong><\/p><p><strong>-God passform, vask etter vask<\/strong><\/p><p><strong>-Miljøvennlig produksjon<\/strong><\/p>"
           }
         },
         "16293749856e1dbefd-2": {
@@ -179,13 +174,13 @@
         "16293747423e70dd61-0": {
           "type": "heading",
           "settings": {
-            "heading": "For alle kroppsformer"
+            "heading": "Passer for alle"
           }
         },
         "16293747423e70dd61-1": {
           "type": "text",
           "settings": {
-            "text": "<p>Jeansene gir maksimal bevegelsesfrihet uten å miste passformen, og du kan bruke de til hvilken som helst anledning. <a href=\"https:\/\/famme.no\/products\/4-flex-jeans\">4FLEX Jeans<\/a> passer til både formelle og uformelle outfits, hvilket gjør jeansen til en perfekt allround-jeans.<\/p>"
+            "text": "<p>Jeansene gir <strong>maksimal bevegelsesfrihet <\/strong>uten å miste passformen, og du kan bruke de til hvilken som helst anledning. <a href=\"https:\/\/famme.no\/products\/4-flex-jeans\">4FLEX Jeans<\/a> passer til både formelle og uformelle outfits, hvilket gjør jeansen til en <strong>perfekt allround-jeans. <\/strong>Jeansen er fleksibel og passer alle kroppsformer. <\/p>"
           }
         },
         "16293747423e70dd61-2": {
@@ -221,7 +216,7 @@
         "1629378253d346ec00-1": {
           "type": "text",
           "settings": {
-            "text": "<p>SKO er en denim-produsent som er <strong>Svanemerket<\/strong>. De er den første denim-produsenten i verden som mottar det offisielle nordiske miljømerket, etablert av Nordisk ministerråd<\/p>"
+            "text": "<p>ISKO er en denim-produsent som er <strong>Svanemerket<\/strong>. De er den første denim-produsenten i verden som mottar det offisielle nordiske miljømerket, etablert av Nordisk ministerråd<\/p>"
           }
         },
         "1629378253d346ec00-2": {
@@ -247,11 +242,11 @@
     "1629375878e5f359bb": {
       "type": "multicolumn",
       "blocks": {
-        "1629375878e5f359bb-0": {
+        "1629375878e5f359bb-2": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/solid-black-4flex-jeans-1_550x_0975a507-9acf-4e03-bf59-7923ffa4fa60.jpg",
-            "title": "Perfekt passform",
+            "image": "shopify:\/\/shop_images\/4flex-svanemerket.jpg",
+            "title": "Super stretchy",
             "text": ""
           }
         },
@@ -263,19 +258,19 @@
             "text": ""
           }
         },
-        "1629375878e5f359bb-2": {
+        "1629375878e5f359bb-0": {
           "type": "column",
           "settings": {
-            "image": "shopify:\/\/shop_images\/solid-black-4flex-jeans-3_550x_2029e14d-edc8-4b56-b375-2f4b61ab24b8.jpg",
-            "title": "Super stretchy",
+            "image": "shopify:\/\/shop_images\/solid-black-4flex-jeans-1_550x_0975a507-9acf-4e03-bf59-7923ffa4fa60.jpg",
+            "title": "Perfekt passform",
             "text": ""
           }
         }
       },
       "block_order": [
-        "1629375878e5f359bb-0",
+        "1629375878e5f359bb-2",
         "1629375878e5f359bb-1",
-        "1629375878e5f359bb-2"
+        "1629375878e5f359bb-0"
       ],
       "settings": {
         "title": "",
@@ -287,15 +282,27 @@
         "button_link": "",
         "swipe_on_mobile": false
       }
+    },
+    "product-recommendations": {
+      "type": "product-recommendations",
+      "settings": {
+        "heading": "",
+        "image_ratio": "adapt",
+        "show_secondary_image": true,
+        "add_image_padding": false,
+        "show_image_outline": true,
+        "show_vendor": false,
+        "show_rating": false
+      }
     }
   },
   "order": [
     "main",
-    "product-recommendations",
     "1629375880536be307",
     "16293749856e1dbefd",
     "16293747423e70dd61",
     "1629378253d346ec00",
-    "1629375878e5f359bb"
+    "1629375878e5f359bb",
+    "product-recommendations"
   ]
 }

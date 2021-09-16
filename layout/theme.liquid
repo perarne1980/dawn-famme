@@ -7,7 +7,7 @@
     <meta name="theme-color" content="">
     <link rel="canonical" href="{{ canonical_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com" crossorigin>
-    
+
 
   <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -16,7 +16,7 @@
     'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
     })(window,document,'script','dataLayer','GTM-TJ4V6TV');</script>
   <!-- End Google Tag Manager -->
-    
+
 
     {%- if settings.favicon != blank -%}
       <link rel="icon" type="image/png" href="{{ settings.favicon | img_url: '32x32' }}">
@@ -73,6 +73,11 @@
         --color-base-accent-2: {{ settings.colors_accent_2.red }}, {{ settings.colors_accent_2.green }}, {{ settings.colors_accent_2.blue }};
         --payment-terms-background-color: {{ settings.colors_background_1 }};
 
+        --gradient-base-background-1: {% if settings.gradient_background_1 != blank %}{{ settings.gradient_background_1 }}{% else %}{{ settings.colors_background_1 }}{% endif %};
+        --gradient-base-background-2: {% if settings.gradient_background_2 != blank %}{{ settings.gradient_background_2 }}{% else %}{{ settings.colors_background_2 }}{% endif %};
+        --gradient-base-accent-1: {% if settings.gradient_accent_1 != blank %}{{ settings.gradient_accent_1 }}{% else %}{{ settings.colors_accent_1 }}{% endif %};
+        --gradient-base-accent-2: {% if settings.gradient_accent_2 != blank %}{{ settings.gradient_accent_2 }}{% else %}{{ settings.colors_accent_2 }}{% endif %};
+
         --page-width: {{ settings.page_width | divided_by: 10 }}rem;
         --page-width-margin: {% if settings.page_width == '1600' %}2{% else %}0{% endif %}rem;
       }
@@ -109,9 +114,18 @@
         }
       }
     {% endstyle %}
-
+    {% if template contains "index" %}
+    <style>{% render 'criticalcss-index' %}</style>
+    <link rel="preload" href="{{ 'mincss-index.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    {% elsif template contains "product" %}
+    <style>{% render 'criticalcss-product' %}</style>
+    <link rel="preload" href="{{ 'mincss-product.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    {% elsif template contains "collection" %}
+    <style>{% render 'criticalcss-collection' %}</style>
+    <link rel="preload" href="{{ 'mincss-collection.css' | asset_url }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    {% else %}
     {{ 'base.css' | asset_url | stylesheet_tag }}
-
+    {% endif %}
     {%- unless settings.type_body_font.system? -%}
       <link rel="preload" as="font" href="{{ settings.type_body_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
@@ -119,18 +133,21 @@
       <link rel="preload" as="font" href="{{ settings.type_header_font | font_url }}" type="font/woff2" crossorigin>
     {%- endunless -%}
 
+    {%- if settings.predictive_search_enabled -%}
+      <link rel="stylesheet" href="{{ 'component-predictive-search.css' | asset_url }}" media="print" onload="this.media='all'">
+    {%- endif -%}
+
     <script>document.documentElement.className = document.documentElement.className.replace('no-js', 'js');</script>
 
 	{{ shop.metafields.loox["global_html_head"] }}
 </head>
 
-  <body>
-    
+  <body class="gradient">
+
     <!-- Google Tag Manager (noscript) -->
       <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TJ4V6TV"
       height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    
     <a class="skip-to-content-link button visually-hidden" href="#MainContent">
       {{ "accessibility.skip_to_text" | t }}
     </a>
@@ -151,7 +168,8 @@
       window.routes = {
         cart_add_url: '{{ routes.cart_add_url }}',
         cart_change_url: '{{ routes.cart_change_url }}',
-        cart_update_url: '{{ routes.cart_update_url }}'
+        cart_update_url: '{{ routes.cart_update_url }}',
+        predictive_search_url: '{{ routes.predictive_search_url }}'
       };
 
       window.cartStrings = {
@@ -169,6 +187,10 @@
         shareSuccess: `{{ 'general.share.success_message' | t }}`,
       }
     </script>
+
+    {%- if settings.predictive_search_enabled -%}
+      <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
+    {%- endif -%}
     {{ shop.metafields.loox["global_html_body"] }}
   </body>
 </html>
