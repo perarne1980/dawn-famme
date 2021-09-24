@@ -51,9 +51,6 @@
       "close": "Stäng dela"
     }
   },
-  "date_formats": {
-    "month_year": "%B %Y"
-  },
   "newsletter": {
     "label": "E-post",
     "success": "Tack för att du prenumererar",
@@ -105,9 +102,9 @@
   },
   "products": {
     "bullets": {
-      "bullet_1": "GRATIS FRAKT ÖVER 650",
-      "bullet_2": "INGEN TULL",
-      "bullet_3": "GOOGLE, APPLE PAY OCH KORT"
+      "bullet_1": "ALLTID FRI FRAKT",
+      "bullet_2": "POSTNORD, DHL",
+      "bullet_3": "PAYPAL, APPLE PAY OCH KORT"
     },
     "sizing_recommendation_up": "Gå en storlek upp",
     "sizing_recommendation_down": "Gå ner en storlek",

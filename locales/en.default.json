@@ -50,9 +50,6 @@
       "success_message": "Link copied to clipboard"
     }
   },
-  "date_formats": {
-    "month_year": "%B %Y"
-  },
   "newsletter": {
     "label": "Email",
     "success": "Thanks for subscribing",
@@ -76,7 +73,6 @@
     "loading": "Loading...",
     "total_reviews": "total reviews",
     "star_reviews_info": "{{ rating_value }} out of {{ rating_max }} stars"
-
   },
   "blogs": {
     "article": {
@@ -104,9 +100,9 @@
   },
   "products": {
     "bullets": {
-      "bullet_1": "Free shipping(70 EUR+)",
-      "bullet_2": "no import and export taxes",
-      "bullet_3": "Google, Apple pay and Ideal"
+      "bullet_1": "ALWAYS FREE SHIPPING",
+      "bullet_2": "NO IMPORT AND EXPORT TAXES",
+      "bullet_3": "GOOGLE PAY, APPLE PAY & PAYPAL"
     },
     "product": {
       "add_to_cart": "Add to cart",
@@ -163,7 +159,7 @@
         "other": "{{ count }} results found for “{{ terms }}”"
       },
       "title": "Search results",
-      "search_for": "Search for “{{ terms }}”" 
+      "search_for": "Search for “{{ terms }}”"
     },
     "cart": {
       "cart": "Cart"
