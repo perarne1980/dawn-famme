@@ -65,13 +65,16 @@
     <div class="template-search__search">
       {%- if settings.predictive_search_enabled -%}
         <predictive-search data-loading-text="{{ 'accessibility.loading' | t }}">
-      {%- endif -%} 
+      {%- endif -%}
         <form action="{{ routes.search_url }}" method="get" role="search" class="search">
           <div class="field">
             <input
               class="search__input field__input"
               id="Search-In-Template"
               type="search"
+              input type="hidden"
+              name="type"
+              value="product"
               name="q"
               value="{{ search.terms | escape }}"
               placeholder="{{ 'general.search.search' | t }}"
@@ -81,7 +84,7 @@
                 aria-owns="predictive-search-results-list"
                 aria-controls="predictive-search-results-list"
                 aria-haspopup="listbox"
-                aria-autocomplete="list" 
+                aria-autocomplete="list"
                 autocorrect="off"
                 autocomplete="off"
                 autocapitalize="off"
@@ -99,10 +102,10 @@
                   </svg>
                 </div>
               </div>
-  
-              <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span> 
+
+              <span class="predictive-search-status visually-hidden" role="status" aria-hidden="true"></span>
             {%- endif -%}
-                
+
             <button type="submit" class="search__button field__button" aria-label="{{ 'general.search.search' | t }}">
               <svg class="icon icon-search">
                 <use xlink:href="#icon-search">
@@ -112,7 +115,7 @@
         </form>
       {%- if settings.predictive_search_enabled -%}
         </predictive-search>
-      {%- endif -%} 
+      {%- endif -%}
 
     </div>
     {%- if search.performed -%}
