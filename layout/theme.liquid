@@ -29,7 +29,8 @@
     <title>
       {%- if template.name == 'collection' -%}
         {%- for filter in collection.filters -%}
-          {% for value in filter.active_values %}{{ value.label | escape }}{%- if forloop.last -%} &#124;{%- endif -%}{%- unless forloop.last -%}, {%- endunless -%}
+          {% for value in filter.active_values %}{{ value.label | escape }}{%- unless forloop.last -%}, {%- endunless -%}
+            {%- if forloop.last -%} &#124;{%- endif -%}
           {% endfor %}
         {%- endfor -%}
       {%- endif -%}
