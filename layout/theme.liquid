@@ -29,9 +29,9 @@
     <title>
       {%- if template.name == 'collection' -%}
         {%- for filter in collection.filters -%}
-          {% for value in filter.active_values %}{{ value.label | escape }}{%- unless forloop.last -%}, {%- endunless -%}
-            {%- if forloop.last -%} &#124;{%- endif -%}
+          {% for value in filter.active_values %}{{ value.label | escape }}{%- unless forloop.last -%},&nbsp;{%- endunless -%}
           {% endfor %}
+          {%- if forloop.last -%} &#124;{%- endif -%}
         {%- endfor -%}
       {%- endif -%}
       {{ page_title }}
